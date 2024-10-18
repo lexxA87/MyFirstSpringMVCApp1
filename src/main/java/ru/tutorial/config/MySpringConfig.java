@@ -29,6 +29,7 @@ public class MySpringConfig implements WebMvcConfigurer {
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/views/");
         templateResolver.setSuffix(".html");
+        templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;
     }
 
@@ -45,5 +46,7 @@ public class MySpringConfig implements WebMvcConfigurer {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
+        resolver.setCharacterEncoding("UTF-8"); // for Ru lang
+        resolver.setContentType("text/html; charset=UTF-8"); // for Ru lang
     }
 }
