@@ -9,7 +9,10 @@
     </option>
   </component>
   <component name="ProjectResources">
-    <resource url="http://thymeleaf.org" location="$PROJECT_DIR$" />
+    <resource url="http://relaxng.org/ns/compatibility/annotations/1.0" location="$PROJECT_DIR$" />
+    <resource url="http://www.thymeleaf.org" location="$PROJECT_DIR$" />
+    <resource url="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6" location="$PROJECT_DIR$" />
+    <resource url="http://www.ultraq.net.nz/thymeleaf/layout" location="$PROJECT_DIR$" />
     <resource url="http://xmlns.jcp.org/xml/ns/javaee" location="$PROJECT_DIR$" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="22" project-jdk-type="JavaSDK">
