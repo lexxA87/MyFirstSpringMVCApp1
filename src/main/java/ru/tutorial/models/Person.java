@@ -1,9 +1,20 @@
 package ru.tutorial.models;
 
+import jakarta.validation.constraints.*;
+
 public class Person {
     private int id;
+
+    @NotEmpty(message = "Name should be not empty")
+    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
     private String name;
+
+    @Min(value = 0, message = "Age should be positive")
+    @Max(value = 130, message = "No more than 130")
     private int age;
+
+    @NotEmpty(message = "Email should be not empty")
+    @Email(message = "Email should be valid")
     private String email;
 
     public Person() {}
