@@ -6,10 +6,12 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.tutorial.models.Person;
+import ru.tutorial.util.PersonValidator;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonDAO {
@@ -23,6 +25,12 @@ public class PersonDAO {
 
     public List<Person> index() {
         return jdbcTemplate.query("SELECT * FROM person", new PersonMapper());
+    }
+
+    public Optional<Person> show(String email) {
+        return jdbcTemplate.query("SELECT * FROM person WHERE email=?",
+                        new Object[]{email}, new BeanPropertyRowMapper<>(Person.class)).
+                stream().findFirst();
     }
 
     public Person show(int id) {
