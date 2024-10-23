@@ -7,6 +7,8 @@ import org.springframework.validation.Validator;
 import ru.tutorial.dao.PersonDAO;
 import ru.tutorial.models.Person;
 
+import java.util.Optional;
+
 @Component
 public class PersonValidator implements Validator {
     private final PersonDAO personDAO;
@@ -25,7 +27,10 @@ public class PersonValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Person person = (Person) target;
 
-        if(personDAO.show(person.getEmail()).isPresent())
+        if(personDAO.show(person.getId()) != null) return;
+
+        if (personDAO.show(person.getEmail()).isPresent()) {
             errors.rejectValue("email", "", "This email address is already in use");
+        }
     }
 }
